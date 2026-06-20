@@ -1,1 +1,315 @@
-# Para-mi-amigaa
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para una Amiga Especial</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fad0c4;
+    overflow-x:hidden;
+    font-family:Arial,sans-serif;
+}
+
+#intro{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:radial-gradient(circle at center,#2a004d,#000);
+    z-index:99999;
+    overflow:hidden;
+    transition:opacity 1.5s ease;
+}
+
+.contenido-intro{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    width:90%;
+}
+
+#frase{
+    color:white;
+    font-size:clamp(1.8rem,5vw,3rem);
+    opacity:0;
+    transition:0.8s;
+    text-shadow:
+    0 0 10px white,
+    0 0 30px pink,
+    0 0 50px violet;
+}
+
+.estrella{
+    position:absolute;
+    color:white;
+    animation:caer linear infinite;
+    user-select:none;
+}
+#btnInicio{
+    margin-top:30px;
+    padding:15px 30px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:#ff4fa0;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.contenido button{
+    margin-top:25px;
+    padding:15px 30px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:18px;
+    background:white;
+    color:#ff4fa0;
+    font-weight:bold;
+}
+
+#mensajeFinal{
+    display:none;
+    margin-top:25px;
+    font-size:1.3rem;
+    animation:aparecer 1s;
+}
+#firma{
+    display:none;
+    margin-top:20px;
+    padding:15px 25px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff4fa0,#ff7eb3);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes caer{
+    from{
+        transform:translateY(-100px);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+@keyframes entradaCarta{
+    from{
+        opacity:0;
+        transform:translateY(50px) scale(0.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+#flash{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:0;
+    height:0;
+    background:white;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    transition:2.5s;
+}
+
+#carta{
+    display:none;
+    opacity:0;
+    width:100%;
+    min-height:100vh;
+    padding:40px 0;
+
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+
+    justify-content:center;
+    align-items:center;
+
+    transition:opacity 2s;
+}
+.contenido{
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    padding:40px;
+    border-radius:25px;
+    width:90%;
+    max-width:700px;
+    text-align:center;
+    color:white;
+    line-height:1.8;
+    box-shadow:0 0 40px rgba(255,255,255,0.3);
+    animation:entradaCarta 2s ease;
+}
+</style>
+</head>
+<body>
+
+<div id="intro">
+    <div id="estrellas"></div>
+
+    <div class="contenido-intro">
+        <h1 id="frase"></h1>
+
+<button id="btnInicio" onclick="iniciarHistoria()">
+💖 Toca para comenzar 💖
+</button>
+    </div>
+
+    <div id="flash"></div>
+</div>
+
+<div id="carta">
+    <div class="contenido">
+
+        <h1>💖 Para Ti 💖</h1>
+
+        <p>
+        Desde que llegaste a mi vida, dejaste una huella que el tiempo no ha podido borrar.
+        No importa cuántos días hayan pasado, porque hay personas que simplemente se vuelven
+        inolvidables, y tú eres una de ellas.
+
+        <br><br>
+
+        Te extrañé más de lo que imaginas. Extrañé nuestras conversaciones, nuestras risas,
+        esos momentos que hacían cualquier día mucho más especial y esa forma tan única que
+        tienes de alegrar la vida de quienes te rodean.
+
+        <br><br>
+
+        A veces la vida nos lleva por caminos diferentes, pero hay amistades que ni el tiempo
+        ni la distancia pueden romper. Son esas amistades que permanecen en el corazón,
+        guardadas entre los recuerdos más bonitos.
+
+        <br><br>
+
+        Gracias por cada sonrisa, cada palabra y cada instante compartido. Esta pequeña carta
+        es solo una forma de recordarte lo especial que eres y lo importante que siempre serás.
+
+        <br><br>
+
+        ✨ Porque algunas personas llegan por casualidad, pero se quedan para siempre en el corazón. ✨
+        </p>
+
+        <button onclick="mostrarMensaje()">
+            💌 Abrir último mensaje
+        </button>
+
+        <div id="mensajeFinal">
+            🌹 Nunca olvides lo importante que eres para mí. Gracias por existir y por ser una amiga tan especial. 🌹
+        </div>
+        <div id="firma">
+            💖 Con mucho cariño, Jonathan para Cinthya 💖
+        </div>
+
+    </div>
+</div>
+<script>
+
+const frases = [
+"✨ Hay personas que llegan a nuestra vida sin avisar...",
+"🌙 Pero terminan convirtiéndose en recuerdos inolvidables...",
+"💖 Personas que hacen cada día un poco más especial...",
+"🌸 Personas que dejan una huella eterna en el corazón...",
+"💌 Y tú eres una de esas personas tan especiales..."
+];
+
+let indice = 0;
+const frase = document.getElementById("frase");
+
+function iniciarHistoria(){
+document.getElementById("btnInicio").style.display = "none";
+mostrarFrases();
+}
+
+function mostrarFrases(){
+
+    if(indice < frases.length){
+
+        frase.style.opacity = "0";
+
+        setTimeout(() => {
+            frase.innerHTML = frases[indice];
+            frase.style.opacity = "1";
+            indice++;
+        }, 300);
+
+        setTimeout(mostrarFrases, 4000);
+
+    }else{
+
+        document.getElementById("flash").style.width = "3000px";
+        document.getElementById("flash").style.height = "3000px";
+
+        setTimeout(() => {
+
+            document.getElementById("intro").style.opacity = "0";
+
+            setTimeout(() => {
+
+                document.getElementById("intro").remove();
+                document.getElementById("carta").style.display = "flex";
+                document.getElementById("carta").style.opacity = "1";
+                
+
+            }, 1500);
+
+        }, 2000);
+
+    }
+
+}
+
+for(let i = 0; i < 250; i++){
+
+    const estrella = document.createElement("div");
+
+    estrella.classList.add("estrella");
+
+    estrella.innerHTML = Math.random() > 0.5 ? "✨" : "💖";
+
+    estrella.style.left = Math.random() * 100 + "vw";
+    estrella.style.fontSize = (Math.random() * 25 + 10) + "px";
+    estrella.style.animationDuration = (Math.random() * 6 + 4) + "s";
+    estrella.style.animationDelay = Math.random() * 5 + "s";
+
+    document.getElementById("intro").appendChild(estrella);
+
+}
+function mostrarMensaje(){
+    document.getElementById("mensajeFinal").style.display = "block";
+    document.getElementById("firma").style.display = "inline-block";
+}
+</script>
+
+</body>
+</html>
